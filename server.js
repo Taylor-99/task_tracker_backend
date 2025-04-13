@@ -7,6 +7,8 @@ const cors = require("cors"); //Enable Cross-Origin Resource Sharing
 require("dotenv").config(); // Loads environment variables from a .env file
 const cookieParser = require("cookie-parser"); // Read and Work with cookies
 
+loginCtrl = require('./controllers/loginController');
+
 const PORT = process.env.PORT||4000;
 
 const app = express();
@@ -30,6 +32,12 @@ app.use(express.urlencoded({ extended: true })); // parse incoming requests with
 app.use(express.json()); // Parses incoming JSON requests
 
 app.use(morgan('tiny')); // tiny logging format
+
+app.get('/', (req, res)=>{
+    res.send('Hello world');
+});
+
+app.use('/login', loginCtrl);
 
 // App Listen
 app.listen(PORT, ()=> {
