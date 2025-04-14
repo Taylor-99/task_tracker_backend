@@ -8,6 +8,8 @@ require("dotenv").config(); // Loads environment variables from a .env file
 const cookieParser = require("cookie-parser"); // Read and Work with cookies
 
 loginCtrl = require('./controllers/loginController');
+signupCtrl = require('./controllers/signupController');
+taskCtrl = require('./controllers/taskController');
 
 const PORT = process.env.PORT||4000;
 
@@ -38,6 +40,8 @@ app.get('/', (req, res)=>{
 });
 
 app.use('/login', loginCtrl);
+app.use('/signup', signupCtrl);
+app.use('/task', taskCtrl);
 
 // App Listen
 app.listen(PORT, ()=> {

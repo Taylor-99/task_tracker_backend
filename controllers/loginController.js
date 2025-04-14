@@ -32,9 +32,11 @@ router.post('/', async (req, res) => {
 
                     const token = jwt.sign(
                         { id: user._id, email: user.email },
-                        process.env.JWT_SECRET,
+                        process.env.SECRET,
                         { expiresIn: '1d' }
                     );
+
+                    console.log('JWT secret in login route:', process.env.SECRET);
 
                     return res.status(200).json({ message: 'Login successful', token });
                 }
