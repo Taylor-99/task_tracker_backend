@@ -1,25 +1,32 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-  firstName: { 
+  task: { 
     type: String, 
     unique: true, 
     required: true 
     },
-  lastName: { 
-    type: String, 
+  dueDate: { 
+    type: Date, 
     unique: true, 
     required: true 
     },
-  email: { 
-    type: String, 
+  createdDate: { 
+    type: Date, 
     unique: true, 
     required: true 
     },
-  password: { 
-    type: String, 
-    required: true
+  category: { 
+    type: String,
     },
+  notes: { 
+    type: String,
+    },
+  user: { 
+    type: mongoose.Types.ObjectId, 
+    ref: 'User'
+    },
+    
 
 }, {timestamps: true});
 
