@@ -7,12 +7,12 @@ const db  = require('../models');
 
 const verifyToken = require('../middleware/VerifyJWT');
 
-// Show - Mood
+// Show
 router.get('/', verifyToken, async (req, res) => {
 
     try {
         const userTasks = await db.Task.find({ user: req.user._id });
-        
+
         res.json(userTasks);
 
         
